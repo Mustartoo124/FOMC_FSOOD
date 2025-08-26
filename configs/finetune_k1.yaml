@@ -1,0 +1,20 @@
+training:
+  epochs: 20
+  lr: 0.001  # Lower for fine-tune
+  optimizer: SGD
+  momentum: 0.9
+  weight_decay: 0.0001
+  freeze_backbone: true
+model:
+  backbone: resnet50
+  load_base: checkpoints/base/model.pth
+loss:
+  cls: focal
+  reg: smooth_l1
+  lambda_mcl: 0.1
+  tau: 0.07  # Temperature for contrastive
+  theta: 0.5  # IoU threshold for centered proposals
+  memory_size: 8192
+shots: 1
+checkpoint_dir: checkpoints/finetune_k1/
+log_dir: logs/finetune_k1/ 

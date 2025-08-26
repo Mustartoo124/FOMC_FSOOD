@@ -1,0 +1,8 @@
+ classes:
+  all: ['plane', 'baseball-diamond', 'bridge', 'ground-track-field', 'small-vehicle', 'large-vehicle', 'ship', 'tennis-court', 'basketball-court', 'storage-tank', 'soccer-ball-field', 'roundabout', 'harbor', 'swimming-pool', 'helicopter']
+  base: ['plane', 'baseball-diamond', 'bridge', 'ground-track-field', 'small-vehicle', 'large-vehicle', 'ship', 'tennis-court', 'basketball-court', 'storage-tank', 'soccer-ball-field', 'roundabout']
+  novel: ['harbor', 'swimming-pool', 'helicopter']
+fewshot:
+  shots: [1, 2, 5, 10]  # K values
+  seeds: 5  # Number of random seeds for averaging
+  mask_threshold: 0.5  # IoU for masking

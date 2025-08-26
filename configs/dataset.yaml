@@ -1,0 +1,13 @@
+ dataset:
+  type: DOTA
+  root_dir: data/dota/
+  image_dir: images/
+  ann_dir: labelTxt/
+  classes: data/class_names.py  # Path to class list
+  img_size: 1024  # Input size
+  batch_size: 4
+  num_workers: 4
+  augmentations:
+    horizontal_flip: true
+    random_rotate: 0.5  # Probability
+    color_jitter: true
