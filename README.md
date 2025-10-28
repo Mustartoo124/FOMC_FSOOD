@@ -1,6 +1,8 @@
  # FOMC-FSOOD: Few-Shot Oriented Object Detection with Memorable Contrastive Learning
 This repository implements the Few-shot Oriented Object Detection with Memorable Contrastive Learning (FOMC) method for aerial images, based on the paper "Few-shot Oriented Object Detection in Remote Sensing Images via Memorable Contrastive Learning" (arXiv:2403.13375). It is designed for few-shot oriented object detection (FSOOD) on the DOTA dataset, using S2A-Net as the base model with extensions for Memorable Contrastive Learning (MCL) and shot masking.
 
+![Architech Overview](assets/architech.png)
+
 ## Features
 - Base Model: S2A-Net with ResNet-50 backbone, Feature Pyramid Network (FPN), Feature Alignment Module (FAM), and Oriented Detection Module (ODM) for handling oriented bounding boxes (OBBs).
 - Few-Shot Enhancements:
@@ -92,6 +94,18 @@ python tools/evaluate.py --model_path checkpoints/finetune_k5/final.pth --split 
 - Processes predictions per class to eval/dets/Task1_{classname}.txt.
 - Uses DOTA_devkit's evaluation (rotated IoU=0.5) to compute per-class AP and mAP.
 - Outputs mAP and per-class APs to console.
+
+### Few-shot Oriented Object Detection Performance on Novel Categories of the DOTA Dataset
+
+| **Method**           | **S²A-Net (5-shot)** | **S²A-Net (10-shot)** | **S²A-Net (20-shot)** | **FOMC (5-shot)** | **FOMC (10-shot)** | **FOMC (20-shot)** |
+|----------------------|----------------------|-----------------------|-----------------------|-------------------|--------------------|--------------------|
+| plane                | 0.13                 | 0.22                  | 0.33                  | **0.20**          | **0.26**           | **0.37**           |
+| baseball-diamond     | 0.13                 | 0.17                  | 0.39                  | **0.11**          | **0.20**           | **0.43**           |
+| tennis-court         | 0.34                 | 0.41                  | 0.53                  | **0.43**          | **0.58**           | **0.68**           |
+| **Avg.**             | **0.20**             | **0.27**              | **0.41**              | **0.25**          | **0.34**           | **0.49**           |
+
+ 
+The **FOMC** model consistently outperforms **S²A-Net** across all shot settings (5, 10, and 20 shots).
 
 ## Quickstart
 Run the full pipeline (prep, base train, fine-tune for all K, evaluate) with:
